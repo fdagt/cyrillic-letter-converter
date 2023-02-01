@@ -1,0 +1,9 @@
+<select id="language-select" class="form-select">
+  {% for category, ls in languages|groupby("category") %}
+  <optgroup label="{{ category }} ">
+    {% for l in ls %}
+    <option value="{{ l.index }}">{{ l.name }}</option>
+    {% endfor %}
+  </optgroup>
+  {% endfor %}
+</select>

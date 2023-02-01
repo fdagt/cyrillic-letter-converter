@@ -1,0 +1,11 @@
+<div>
+  <textarea id="convert-text-input" class="rounded-2" rows="7" spellcheck="false" style="resize: none; width: 100%"></textarea>
+  <div class="m-2 text-center">
+    <div class="btn btn-primary mx-auto" onclick="convertText()">変換</div>
+  </div>
+  <div class="bg-light rounded-2" style="position: relative">
+    <div id="convert-text-output" class="p-3" style="white-space: pre"></div>
+    <div id="copy-output-button" class="btn btn-outline-secondary m-2" style="position: absolute; right: 0; top: 0; display: none;" onclick="copyOutput()"
+	 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="manual" title="コピーしました。">コピー</div>
+  </div>
+</div>

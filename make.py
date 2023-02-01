@@ -1,11 +1,18 @@
 import htmlmin
 from jinja2 import Environment, FileSystemLoader
+import json
 import rjsmin
 
 environment = Environment(loader=FileSystemLoader("template/"))
 
+languages = None
+with open("template/language.json", mode="r", encoding="utf-8") as language_file:
+    languages = json.load(language_file)
+for i in range(0, len(languages)):
+    languages[i]['index'] = i
+    
 index_template = environment.get_template("index.html")
-index_src = htmlmin.minify(index_template.render())
+index_src = htmlmin.minify(index_template.render(languages=languages))
 with open("public/index.html", mode="w", encoding="utf-8") as index_file:
     index_file.write(index_src)
 index_template = index_src = None
