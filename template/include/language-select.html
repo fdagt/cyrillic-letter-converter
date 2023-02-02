@@ -1,4 +1,4 @@
-<select id="language-select" class="form-select">
+<select id="language-select" class="form-select" onchange="onChangeLanguage()">
   {% for category, ls in languages|groupby("category") %}
   <optgroup label="{{ category }} ">
     {% for l in ls %}
@@ -7,3 +7,4 @@
   </optgroup>
   {% endfor %}
 </select>
+<script>initializeLanguageSelect()</script>

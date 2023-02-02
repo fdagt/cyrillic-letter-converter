@@ -28,5 +28,20 @@ function displayCopySuccessMessage() {
     window.setTimeout(() => { copyButtonTooltip.hide(); }, 2500);
 }
 
+function initializeLanguageSelect() {
+  const defaultLang = window.sessionStorage.getItem("lang");
+  const selectElt = document.getElementById("language-select");
+  if (defaultLang === null)
+      selectElt.value = "0";
+  else
+      selectElt.value = defaultLang;
+}
+
+function onChangeLanguage() {
+    const selectElt = document.getElementById("language-select");
+    const langIndex = selectElt.value;
+    window.sessionStorage.setItem("lang", langIndex);
+}
+
 languages = {% include "language.json" %} ;
 converters = {{ converter_functions }} ;
