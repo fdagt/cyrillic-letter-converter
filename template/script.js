@@ -50,5 +50,5 @@ function displayTranscriptionTable(lang) {
     tables[lang].style.display = "block";
 }
 
-languages = {% include "language.json" %} ;
-converters = {{ converter_functions }} ;
+let languages = {% include "language.json" %} ;
+let converters = {{ converter_functions }} ;
