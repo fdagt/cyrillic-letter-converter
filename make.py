@@ -29,3 +29,9 @@ script_src = rjsmin.jsmin(script_template.render(converter_functions=converters)
 with open("public/script.js", mode="w", encoding="utf-8") as script_file:
     script_file.write(script_src)
 script_template = script_src = None
+
+test_template = environment.get_template("test.html")
+test_src = htmlmin.minify(test_template.render())
+with open("public/test.html", mode="w", encoding="utf-8") as test_file:
+    test_file.write(test_src)
+test_template = test_src = None

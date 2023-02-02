@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}テストページ - キリル文字入力ツール{% endblock %}
+
+{% block additional_header %}
+<script src="/script.js"></script>
+<template id="test-result-template">
+  <div class="d-flex flex-nowrap align-items-center border rounded-2 mb-2">
+    <div class="test-result p-2" style="font-size: 4rem"></div>
+    <div class="me-auto">
+      <div class="m-2">入力 <span class="test-input"></span></div>
+      <div class="m-2">出力 <span class="test-output"></span></div>
+      <div class="m-2">正答 <span class="test-expect"></span></div>
+    </div>
+  </div>
+</template>
+{% endblock %}
+
+{% block body %}
+{% include "include/header.html" %}
+<div id="test-results" class="container">
+</div>
+<script>
+  const tests = [{
+      "input": "abvgdejozhzijklmnoprstufkhhxtscchshshch\"''y'e'juja",
+      "expect": "абвгдеёжзийклмнопрстуфхххццчшщъъыьэюя",
+      "language": "ru"
+  }, {
+      "input": "ABVGDEJOJoZHZhZIJKLMNOPRSTUFKHKhHXTSTsCCHChSHShSHCHShchYYE'JUJuJAJaShCh",
+      "expect": "АБВГДЕЁЁЖЖЗИЙКЛМНОПРСТУФХХХХЦЦЦЧЧШШЩЩЫЫЭЮЮЯЯШЧ",
+      "language": "ru"
+  }, {
+      "input": "123 t|s 456",
+      "expect": "123 тс 456",
+      "language": "ru"
+  }, {
+      "input": "abvhgdejezhzyijklmnoprstufkhxtscchshshch'juja\"''",
+      "expect": "абвгґдеєжзиійклмнопрстуфххццчшщьюя''",
+      "language": "uk"
+  }, {
+      "input": "ABVHGDEJEJeZHZhZYIJKLMNOPRSTUFKHKhXTSTsCCHChSHShSHCHShchJUJuJAJaShCh",
+      "expect": "АБВГҐДЕЄЄЖЖЗИІЙКЛМНОПРСТУФХХХЦЦЦЧЧШШЩЩЮЮЯЯШЧ",
+      "language": "uk"
+  }];
+  for (test of tests) {
+      const converter = converters[languages.findIndex(l => l.code === test.language)];
+      const output = converter(test.input);
+      const result = createResult(test, output);
+      document.getElementById("test-results").append(result);
+  }
+
+  function createResult(test, output) {
+      const template = document.getElementById("test-result-template").content.cloneNode(true);
+      template.querySelector(".test-result").innerHTML = output === test.expect ? "〇" : "×";
+      template.querySelector(".test-input").innerHTML = test.input + ", " + test.language;
+      template.querySelector(".test-output").innerHTML = output;
+      template.querySelector(".test-expect").innerHTML = test.expect;
+      return template;
+  }
+</script>
+{% endblock %}
