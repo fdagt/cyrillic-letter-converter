@@ -110,4 +110,12 @@ def compile(language):
     tree = Node()
     for k, v in language['transcription'].items():
         tree[k] = v
+        v_upper = v.upper()
+        k_upper = k.upper()
+        k_first_upper = k[0].upper() + k[1:]
+        if v_upper != v:
+            if k_upper != k:
+                tree[k_upper] = v_upper
+            if k_first_upper != k_upper and k_first_upper != k:
+                tree[k_first_upper] = v_upper
     return tree.compile()
