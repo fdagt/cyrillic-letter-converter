@@ -3,6 +3,7 @@
 
 {% block additional_header %}
 <script src="/script.js"></script>
+<link rel="stylesheet" href="/main.css">
 {% endblock %}
 
 {% block body %}
@@ -11,6 +12,10 @@
   <div class="mb-2">
     {% include "include/language-select.html" %}
   </div>
+  <div class="mb-2">
+    {% include "include/transcription-table.html" %}
+  </div>
+  <script>initializeLanguageSelect()</script>
   <div>
     {% include "include/converter.html" %}
   </div>

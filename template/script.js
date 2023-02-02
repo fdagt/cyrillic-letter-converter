@@ -29,18 +29,25 @@ function displayCopySuccessMessage() {
 }
 
 function initializeLanguageSelect() {
-  const defaultLang = window.sessionStorage.getItem("lang");
-  const selectElt = document.getElementById("language-select");
-  if (defaultLang === null)
-      selectElt.value = "0";
-  else
-      selectElt.value = defaultLang;
+    const defaultLang = parseInt(window.sessionStorage.getItem("lang"))
+    const lang = defaultLang === null ? 0 : defaultLang;
+    const selectElt = document.getElementById("language-select");
+    selectElt.value = lang;
+    displayTranscriptionTable(lang);
 }
 
 function onChangeLanguage() {
     const selectElt = document.getElementById("language-select");
-    const langIndex = selectElt.value;
+    const langIndex = parseInt(selectElt.value);
+    displayTranscriptionTable(langIndex);
     window.sessionStorage.setItem("lang", langIndex);
+}
+
+function displayTranscriptionTable(lang) {
+    const tables = document.getElementById("transcription-table-container").querySelectorAll(":scope > div");
+    for (const table of tables)
+	table.style.display = "none";
+    tables[lang].style.display = "block";
 }
 
 languages = {% include "language.json" %} ;

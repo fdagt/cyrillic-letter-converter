@@ -1,0 +1,7 @@
+.transcription-table {
+    text-align: center;
+}
+
+.transcription-table th, .transcription-table td {
+    padding: .25rem;
+}

@@ -43,6 +43,20 @@
 	"|": ""
     },
     "table": {
+	"vowel": {
+	    "hard": ["a", "y", "u", "e'", "o", "\""],
+	    "soft": ["ja", "i", "ju", "e", "jo", "'"]
+	},
+	"consonant": {
+	    "columns": ["唇", "歯茎", "後部歯茎", "硬口蓋", "軟口蓋"],
+	    "rows": ["鼻", "破裂", "破擦", "摩擦", "接近", "ふるえ"],
+	    "body": [["m", "n", null, null, null],
+		     [["p", "b"], ["t", "d"], null, null, ["k", "g"]],
+		     [null, "ts", null, "ch", null],
+		     [["f", "v"], ["s", "z"], ["sh", "zh"], "shch", "kh"],
+		     [null, "l", null, "j", null],
+		     [null, null, "r", null, null]]
+	}
     }
 }, {
     "name": "ウクライナ語",
@@ -88,6 +102,20 @@
 	"|": ""
     },
     "table": {
+	"vowel": {
+	    "hard": ["a", "y", "u", "e", "o", "\""],
+	    "soft": ["ja", ["i", "ji"], "ju", "je", "jo", "'"]
+	},
+	"consonant": {
+	    "columns": ["唇", "歯茎", "後部歯茎", "硬口蓋", "軟口蓋", "声門"],
+	    "rows": ["鼻", "破裂", "破擦", "摩擦", "接近", "ふるえ"],
+	    "body": [["m", "n", null, null, null, null],
+		     [["p", "b"], ["t", "d"], null, null, ["k", "g"], null],
+		     [null, "ts", "ch", null, null, null],
+		     ["f", ["s", "z"], ["sh", "zh"], null, "kh", "h"],
+		     ["v", "l", null, "j", null, null],
+		     [null, "r", null, null, null, null]]
+	}
     }
 }, {
     "name": "ベラルーシ語",
@@ -133,5 +161,19 @@
 	"|": ""
     },
     "table": {
+	"vowel": {
+	    "hard": ["a", "y", "u", "e'", "o", "\""],
+	    "soft": ["ja", "i", "ju", "e", "jo", "'"]
+	},
+	"consonant": {
+	    "columns": ["唇", "歯茎", "後部歯茎", "硬口蓋", "軟口蓋"],
+	    "rows": ["鼻", "破裂", "破擦", "摩擦", "接近", "ふるえ"],
+	    "body": [["m", "n", null, null, null],
+		     [["p", "b"], ["t", "d"], null, null, "k"],
+		     [null, "ts", "ch", null, null],
+		     [["f", "v"], ["s", "z"], ["sh", "zh"], null, ["kh", "gh"]],
+		     ["w", "l", null, "j", null],
+		     [null, "r", null, null, null]]
+	}
     }
 }]
