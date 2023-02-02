@@ -80,31 +80,31 @@ class Node:
         helper(self, '')
 
     def compile(self):
+        def generate_prefix(node):
+            return "if (index >= inputText.length) {{ output += {:s}; break topLoop; }}".format(javascript_string_literal(node.value if node.value is not None else ""))
+        def generate_default_clause(node):
+            if node.value is None:
+                return "default: output += inputText[index-1];"
+            else:
+                return "default: output += {:s}; index--;".format(javascript_string_literal(node.value))
+        def generate_leaf_code(node):
+            if node.value is None:
+                return "{output = inputText; break topLoop;}"
+            else:
+                return "output += {:s};".format(javascript_string_literal(node.value))
         def build_statements(node):
-            code = "if (index >= inputText.length) {"
-            if node.value != None:
-                code += "output += {:s};".format(javascript_string_literal(node.value))
-            code += "break topLoop;}"
+            if len(node.children) == 0:
+                return generate_leaf_code(node)
+            code = generate_prefix(node)
             code += "switch (inputText.codePointAt(index++)) {"
             for k, v in node.children.items():
                 code += "case {:d}: {:s} break;".format(k, v)
-            code += "default:"
-            if node.value != None:
-                code += "output += {:s}; index--;".format(javascript_string_literal(node.value))
-            else:
-                code += "output += inputText[index-1];"
+            code += generate_default_clause(node)
             code += "}";
             return code
         self.apply_completion()
         self.value = None
-        return """function (inputText) {{
-  let index = 0;
-  let output = "";
-  topLoop: while (true) {{
-    {:s}
-  }}
-  return output;
-}}""".format(self.fold(build_statements))
+        return """function (inputText) {{let index=0,output=""; topLoop: while(true){{ {:s} }} return output;}}""".format(self.fold(build_statements))
         
 def compile(language):
     tree = Node()
