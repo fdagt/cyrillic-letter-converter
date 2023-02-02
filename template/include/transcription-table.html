@@ -2,42 +2,44 @@
   {% for language in languages %}
   {% with language = language %}
   <div style="display: none">
-    <table class="transcription-table table-bordered mx-auto mb-2">
-      <tr>
-	<th></th>
-	{% for column in language.table.consonant.columns %}
-	<td>{{ column }}</td>
+    <div class="d-flex justify-content-center flex-wrap align-items-center" style="gap: 5mm">
+      <table class="transcription-table table-bordered">
+	<tr>
+	  <th></th>
+	  {% for column in language.table.consonant.columns %}
+	  <th>{{ column }}</th>
+	  {% endfor %}
+	</tr>
+	{% for row in language.table.consonant.rows %}
+	<tr>
+	  <th>{{ row }}</th>
+	  {% for letters in language.table.consonant.body[loop.index0] %}
+	  {% with letters = letters %}
+	  {% include "include/transcription-table-cell.html" %}
+	  {% endwith %}
+	  {% endfor %}
+	</tr>
 	{% endfor %}
-      </tr>
-      {% for row in language.table.consonant.rows %}
-      <tr>
-	<th>{{ row }}</th>
-	{% for letters in language.table.consonant.body[loop.index0] %}
-	{% with letters = letters %}
-	{% include "include/transcription-table-cell.html" %}
-	{% endwith %}
-	{% endfor %}
-      </tr>
-      {% endfor %}
-    </table>
-    <table class="transcription-table table-bordered mx-auto mb-2">
-      <tr>
-	<th>硬母音</th>
-	{% for letters in language.table.vowel.hard %}
-	{% with letters = letters %}
-	{% include "include/transcription-table-cell.html" %}
-	{% endwith %}
-	{% endfor %}
-      </tr>
-      <tr>
-	<th>軟母音</th>
-	{% for letters in language.table.vowel.soft %}
-	{% with letters = letters %}
-	{% include "include/transcription-table-cell.html" %}
-	{% endwith %}
-	{% endfor %}
-      </tr>
-    </table>
+      </table>
+      <table class="transcription-table table-bordered">
+	<tr>
+	  <th>硬母音</th>
+	  {% for letters in language.table.vowel.hard %}
+	  {% with letters = letters %}
+	  {% include "include/transcription-table-cell.html" %}
+	  {% endwith %}
+	  {% endfor %}
+	</tr>
+	<tr>
+	  <th>軟母音</th>
+	  {% for letters in language.table.vowel.soft %}
+	  {% with letters = letters %}
+	  {% include "include/transcription-table-cell.html" %}
+	  {% endwith %}
+	  {% endfor %}
+	</tr>
+      </table>
+    </div>
   </div>
   {% endwith %}
   {% endfor %}
