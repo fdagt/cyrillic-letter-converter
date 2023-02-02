@@ -29,8 +29,8 @@ function displayCopySuccessMessage() {
 }
 
 function initializeLanguageSelect() {
-    const defaultLang = parseInt(window.sessionStorage.getItem("lang"))
-    const lang = defaultLang === null ? 0 : defaultLang;
+    const defaultLang = window.sessionStorage.getItem("lang");
+    const lang = defaultLang === null ? 0 : parseInt(defaultLang);
     const selectElt = document.getElementById("language-select");
     selectElt.value = lang;
     displayTranscriptionTable(lang);
