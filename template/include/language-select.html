@@ -1,7 +1,7 @@
 <select id="language-select" class="form-select" onchange="onChangeLanguage()">
-  {% for category, ls in languages|groupby("category") %}
+  {% for category, ls in languages|sort(attribute='category')|groupby("category") %}
   <optgroup label="{{ category }} ">
-    {% for l in ls %}
+    {% for l in ls|sort(attribute='name') %}
     <option value="{{ l.index }}">{{ l.name }}</option>
     {% endfor %}
   </optgroup>
