@@ -3,10 +3,8 @@
   {% elif letters is string %}
   {{ language.transcription[letters] }} = {{ letters }}
   {% else %}
-  <div class="d-flex flex-column">
-    {% for letter in letters %}
-    <div>{{ language.transcription[letter] }} = {{ letter }}</div>
-    {% endfor %}
-  </div>
+  {% for letter in letters %}
+  <div>{{ language.transcription[letter] }} = {{ letter }}</div>
+  {% endfor %}
   {% endif %}
 </td>
