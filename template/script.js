@@ -2,7 +2,7 @@
 function convertText() {
     const inputText = document.getElementById("convert-text-input").value;
     const languageIndex = document.getElementById("language-select").value;
-    const outputText = inputText;//converters[languageIndex](inputText);
+    const outputText = converters[languageIndex](inputText);
     document.getElementById("convert-text-output").innerHTML = outputText;
     // コピーボタンを出現させる。
     const copyBtn = document.getElementById("copy-output-button");

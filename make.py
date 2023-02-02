@@ -3,6 +3,8 @@ from jinja2 import Environment, FileSystemLoader
 import json
 import rjsmin
 
+from script.compile import compile
+
 environment = Environment(loader=FileSystemLoader("template/"))
 
 languages = None
@@ -17,8 +19,13 @@ with open("public/index.html", mode="w", encoding="utf-8") as index_file:
     index_file.write(index_src)
 index_template = index_src = None
 
+converters = "["
+for l in languages:
+    converters += compile(l) + ','
+converters += "]"    
+    
 script_template = environment.get_template("script.js")
-script_src = rjsmin.jsmin(script_template.render(converter_functions="[]"))
+script_src = rjsmin.jsmin(script_template.render(converter_functions=converters))
 with open("public/script.js", mode="w", encoding="utf-8") as script_file:
     script_file.write(script_src)
 script_template = script_src = None
