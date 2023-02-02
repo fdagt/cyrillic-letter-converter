@@ -105,7 +105,7 @@
     "table": {
 	"vowel": {
 	    "hard": ["a", "y", "u", "e", "o", "\""],
-	    "soft": ["ja", ["i", "ji"], "ju", "je", "jo", "'"]
+	    "soft": ["ja", ["i", "ji"], "ju", "je", null, "'"]
 	},
 	"consonant": {
 	    "columns": ["唇", "歯茎", "後部歯茎", "硬口蓋", "軟口蓋", "声門"],
