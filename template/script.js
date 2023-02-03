@@ -3,7 +3,9 @@ function convertText() {
     const inputText = document.getElementById("convert-text-input").value;
     const languageIndex = document.getElementById("language-select").value;
     const outputText = converters[languageIndex](inputText);
-    document.getElementById("convert-text-output").innerHTML = outputText;
+    const outputElt = document.getElementById("convert-text-output");
+    outputElt.innerHTML = outputText;
+    outputElt.lang = languages[languageIndex].code;
     // コピーボタンを出現させる。
     const copyBtn = document.getElementById("copy-output-button");
     if (outputText === "") {
