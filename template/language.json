@@ -113,7 +113,7 @@
 	    "body": [["m", "n", null, null, null, null],
 		     [["p", "b"], ["t", "d"], null, null, ["k", "g"], null],
 		     [null, "ts", "ch", null, null, null],
-		     ["f", ["s", "z"], ["sh", "zh"], null, "kh", "h"],
+		     ["f", ["s", "z"], ["sh", "zh"], "shch", "kh", "h"],
 		     ["v", "l", null, "j", null, null],
 		     [null, "r", null, null, null, null]]
 	}
@@ -224,7 +224,7 @@
     "table": {
 	"vowel": {
 	    "hard": ["a", ["i", "i`"], "u", ["e", "e`"], "o"],
-	    "soft": []
+	    "soft": [null, null, null, null, null]
 	},
 	"consonant": {
 	    "columns": ["唇", "歯茎", "後部歯茎", "硬口蓋", "軟口蓋"],
@@ -281,8 +281,8 @@
     },
     "table": {
 	"vowel": {
-	    "hard": ["a", null, "u", "e", "o", "\""],
-	    "soft": ["ja", "i", "ju", null, "jo", null]
+	    "hard": ["a", "i", "u", "e", "o", "\""],
+	    "soft": ["ja", null, "ju", null, null, null]
 	},
 	"consonant": {
 	    "columns": ["唇", "歯茎", "後部歯茎", "硬口蓋", "軟口蓋"],
@@ -291,7 +291,7 @@
 		     [["p", "b"], ["t", "d"], null, null, ["k", "g"]],
 		     [null, "ts", "ch", null, null],
 		     [["f", "v"], ["s", "z"], ["sh", "zh"], "sht", "kh"],
-		     [null, "l", null, "j", null],
+		     [null, "l", null, ["j", "'"], null],
 		     [null, null, "r", null, null]]
 	}
     }
@@ -305,7 +305,7 @@
 	"v": "в",
 	"g": "г",
 	"d": "д",
-	"dz": "ђ",
+	"dj": "ђ",
 	"e": "е",
 	"zh": "ж",
 	"z": "з",
@@ -331,21 +331,21 @@
 	"ts": "ц",
 	"c": "ц",
 	"tsh": "ч",
-	"dj": "џ",
+	"dzh": "џ",
 	"sh": "ш",
 	"|": ""
     },
     "table": {
 	"vowel": {
 	    "hard": ["a", "i", "u", "e", "o"],
-	    "soft": []
+	    "soft": [null, null, null, null, null]
 	},
 	"consonant": {
 	    "columns": ["唇", "歯茎", "後部歯茎", "硬口蓋", "軟口蓋"],
 	    "rows": ["鼻", "破裂", "破擦", "摩擦", "接近", "ふるえ"],
 	    "body": [["m", "n", null, "nj", null],
 		     [["p", "b"], ["t", "d"], null, null, ["k", "g"]],
-		     [null, "ts", ["tsh", "dj"], ["ch", "dz"], null],
+		     [null, "ts", ["tsh", "dzh"], ["ch", "dj"], null],
 		     [["f", "v"], ["s", "z"], ["sh", "zh"], null, "kh"],
 		     [null, "l", null, "j", null],
 		     [null, "r", null, null, null]]
